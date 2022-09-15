@@ -4,6 +4,7 @@ import AuthRoutes from "./routes/AuthRoutes.js"
 import UserRoutes from "./routes/UserRoutes.js"
 import mongoose from "mongoose"
 import cors from "cors"
+import secure from "ssl-express-www"
 import cookieParser from "cookie-parser"
 import User from "./models/UserModel.js"
 import jwt from "jsonwebtoken"
@@ -11,8 +12,11 @@ const app = express()
 const port = 3000
 const host = '0.0.0.0'
 
-app.use(express.json())
+app.enable('trust proxy')
+app.use(secure)
 app.use(cors())
+app.use(express.json())
+
 app.use(urlencoded({ extended: true }))
 app.use(cookieParser())
 
