@@ -8,7 +8,8 @@ import cookieParser from "cookie-parser"
 import User from "./models/UserModel.js"
 import jwt from "jsonwebtoken"
 const app = express()
-const port = 4000
+const port = 3000
+const host = '0.0.0.0'
 
 app.use(express.json())
 app.use(cors())
@@ -38,6 +39,6 @@ app.use("/books", BookRoutes)
 app.use("/user", UserRoutes)
 app.use("/auth", AuthRoutes)
 
-app.listen(port, () => {
+app.listen(host, port, () => {
   console.log(`Server started on port ${port}`)
 })
